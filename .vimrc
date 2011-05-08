@@ -18,7 +18,7 @@ if &t_Co > 2 || has("gui_running")
   hi! Constant                  ctermfg=Cyan    cterm=none
   hi! Identifier                ctermfg=Green   cterm=none
   hi! LineNr      term=standout ctermfg=white    cterm=underline
-  " html ãƒã‚¤ãƒ©ã‚¤ãƒˆå®šç¾©
+  " html ¥Ï¥¤¥é¥¤¥ÈÄêµÁ
   hi! htmlTitle ctermfg=Green   ctermfg=none
   hi! htmlLink  ctermfg=Green
   hi! htmlH1    ctermfg=Green
@@ -41,6 +41,7 @@ set title
 
 set scrolloff=2
 
+hi StatusLine term=NONE cterm=NONE ctermfg=black ctermbg=Darkblue
 set statusline=%<%f\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%4v\ %l/%L
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
@@ -75,18 +76,11 @@ endfunction
 "let &termencoding=&encoding
 set termencoding=utf-8
 set encoding=utf-8
-"set fileencoding=utf-8
-set fileencoding=japan
-"set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp-2,euc-jisx0213,euc-jp,cp932,utf-8
-"set fileencodings=iso-2022-jp,utf-8,euc-jp,ucs-2le,ucs-2,cp932 
-set fileencodings=utf-8,ist-2022-jp,euc-jp,ucs-2le,ucs-2,cp932 
+set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp-2,euc-jisx0213,euc-jp,cp932,utf-8
 
 if &encoding == 'utf-8'
   set ambiwidth=double
 endif
-" æ–°ã—ãä½œæˆã—ãŸæ™‚ã¯UTF-8ã«ã‚»ãƒƒãƒˆã™ã‚‹ã€‚
-autocmd BufNewFile *.{py,php,txt,css,htm*}{,.in} set fileencoding=utf-8
-
 
 " format.vim
 "-----------------------------------------------------------
@@ -111,6 +105,7 @@ let g:autodate_keyword_post = '$'
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
+
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
@@ -134,70 +129,108 @@ if has("autocmd")
 endif " has("autocmd")
 
 
-"php ä¿ç®¡
-"
-" ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—ã”ã¨ã«è¾æ›¸ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®š
-autocmd FileType php :set dictionary+=$HOME/.vim/php.dict
-"è¾æ›¸ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ç”¨ã™ã‚‹è¨­å®šã«å¤‰æ›´
-set complete+=k
+"php Êİ´É
+" ¥Õ¥¡¥¤¥ë¥¿¥¤¥×¤´¤È¤Ë¼­½ñ¥Õ¥¡¥¤¥ë¤ò»ØÄê
+autocmd FileType php  :set dictionary=~/.vim/dict/php.dict
 
-" phpdoc ç”¨ã®ã‚³ãƒ¡ãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹ã‚­ãƒ¼ãƒã‚¤ãƒ³ãƒ‰
+"php doc ÍÑ
 source $HOME/.vim/plugin/php-doc.vim
 inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
 nnoremap <C-D> :call PhpDocSingle()<CR>
-vnoremap <C-D> :call PhpDocRange()<CR> 
+vnoremap <C-D> :call PhpDocRange()<CR>
 
+
+"¼­½ñ¥Õ¥¡¥¤¥ë¤ò»ÈÍÑ¤¹¤ëÀßÄê¤ËÊÑ¹¹
+set complete+=k
 "-----------------------------------------------------------------------------
-" æ¤œç´¢é–¢é€£
+" ¸¡º÷´ØÏ¢
 "
-"æ¤œç´¢æ–‡å­—åˆ—ãŒå°æ–‡å­—ã®å ´åˆã¯å¤§æ–‡å­—å°æ–‡å­—ã‚’åŒºåˆ¥ãªãæ¤œç´¢ã™ã‚‹
+"¸¡º÷Ê¸»úÎó¤¬¾®Ê¸»ú¤Î¾ì¹ç¤ÏÂçÊ¸»ú¾®Ê¸»ú¤ò¶èÊÌ¤Ê¤¯¸¡º÷¤¹¤ë
 set ignorecase
 set incsearch
-"æ¤œç´¢æ–‡å­—åˆ—ã«å¤§æ–‡å­—ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã¯åŒºåˆ¥ã—ã¦æ¤œç´¢ã™ã‚‹
+"¸¡º÷Ê¸»úÎó¤ËÂçÊ¸»ú¤¬´Ş¤Ş¤ì¤Æ¤¤¤ë¾ì¹ç¤Ï¶èÊÌ¤·¤Æ¸¡º÷¤¹¤ë
 set smartcase
-"æ¤œç´¢æ™‚ã«æœ€å¾Œã¾ã§è¡Œã£ãŸã‚‰æœ€åˆã«æˆ»ã‚‹
+"¸¡º÷»ş¤ËºÇ¸å¤Ş¤Ç¹Ô¤Ã¤¿¤éºÇ½é¤ËÌá¤ë
 set wrapscan
-"æ¤œç´¢æ–‡å­—åˆ—å…¥åŠ›æ™‚ã«é †æ¬¡å¯¾è±¡æ–‡å­—åˆ—ã«ãƒ’ãƒƒãƒˆã•ã›ãªã„
+"¸¡º÷Ê¸»úÎóÆşÎÏ»ş¤Ë½ç¼¡ÂĞ¾İÊ¸»úÎó¤Ë¥Ò¥Ã¥È¤µ¤»¤Ê¤¤
 set noincsearch
-"è¡Œç•ªå·ã‚’è¡¨ç¤ºã™ã‚‹
+
+"¹ÔÈÖ¹æ¤òÉ½¼¨¤¹¤ë
 set number
-"ã‚¿ãƒ–å¹…ã‚’è¨­å®šã™ã‚‹
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+"¥¿¥ÖÉı¤òÀßÄê¤¹¤ë
+set tabstop=8
+"set shiftwidth=2
+"set softtabstop=4
 set smarttab
-"å…¥åŠ›ä¸­ã®ã‚³ãƒãƒ³ãƒ‰ã‚’ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã«è¡¨ç¤ºã™ã‚‹
+"ÆşÎÏÃæ¤Î¥³¥Ş¥ó¥É¤ò¥¹¥Æ¡¼¥¿¥¹¤ËÉ½¼¨¤¹¤ë
 set showcmd
-"æ‹¬å¼§å…¥åŠ›æ™‚ã®å¯¾å¿œã™ã‚‹æ‹¬å¼§ã‚’è¡¨ç¤º
+"³ç¸ÌÆşÎÏ»ş¤ÎÂĞ±ş¤¹¤ë³ç¸Ì¤òÉ½¼¨
 set showmatch
-"æ¤œç´¢çµæœæ–‡å­—åˆ—ã®ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’æœ‰åŠ¹ã«ã™ã‚‹
+"¸¡º÷·ë²ÌÊ¸»úÎó¤Î¥Ï¥¤¥é¥¤¥È¤òÍ­¸ú¤Ë¤¹¤ë
 set hlsearch
-"ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ©ã‚¤ãƒ³ã‚’å¸¸ã«è¡¨ç¤º
+"¥¹¥Æ¡¼¥¿¥¹¥é¥¤¥ó¤ò¾ï¤ËÉ½¼¨
 set laststatus=2
-"ãƒãƒƒã‚¯ã‚¹ãƒšãƒ¼ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹
+"¥Ğ¥Ã¥¯¥¹¥Ú¡¼¥¹¤òÍ­¸ú¤Ë¤¹¤ë
 set backspace=indent,eol,start
 set wildmenu
 set formatoptions+=mM
-"ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ
-"set backupdir=z:Â¥Â¥backup
-"ã‚¿ãƒ–å…¥åŠ›ã‚’ç©ºç™½æ–‡å­—ã§ç½®ãæ›ãˆ
+"¥Ğ¥Ã¥¯¥¢¥Ã¥×¥Õ¥¡¥¤¥ë¤ÎºîÀ®
+"set backupdir=z:\\backup
+"¥¿¥ÖÆşÎÏ¤ò¶õÇòÊ¸»ú¤ÇÃÖ¤­´¹¤¨
 "set expandtab
 set autoindent
-"ãƒãƒ¼ã®è‰²ã®èª¿æ•´
+"¥Ğ¡¼¤Î¿§¤ÎÄ´À°
 "hi DiffAdd ctermfg=g ctermbg=green
 
-" ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æ—¥æœ¬èªã«ã™ã‚‹
+" ÆüËÜ¸ì¤ò°·¤¦¤¿¤á¤ËÉ¬Í×
+"set encoding=japan
+" ¥Õ¥¡¥¤¥ë¤Î´Á»ú¥³¡¼¥É¼«Æ°È½ÊÌ¤Î¤¿¤á¤ËÉ¬Í×¡£(Í×iconv)
+"if has('yiconv++')
+" set fileencodings+=iso-2022-jp
+" set fileencodings+=utf-8,ucs-2le,ucs-2
+" if &encoding ==# 'euc-jp'
+" set fileencodings+=cp932
+" else
+" set fileencodings+=euc-jp
+" endif
+"endif
+" ¥á¥Ã¥»¡¼¥¸¤òÆüËÜ¸ì¤Ë¤¹¤ë
 let $LANG = 'japanese'
 
+" for minibufexpl.vim
+:let g:miniBufExplMapWindowNavVim = 1
+:let g:miniBufExplMapWindowNavArrows = 1
+:let g:miniBufExplMapCTabSwitchBuffs = 1
 
-" Alignã‚’æ—¥æœ¬èªç’°å¢ƒã§ã—ã‚ˆã†ã™ã‚‹
-let g:Align_xstrlen = 3
-
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<CR>" : "\<CR>"
+:abbr #b /***********************************************
+:abbr #e ***********************************************/
 
 
-" htmlã®ç‚ºã®è¨­å®š
 augroup SkeletonAu
     autocmd!
     autocmd BufNewFile *.html 0r $HOME/.vim/templates/skel.html
+    autocmd BufNewFile *.php 0r $HOME/.vim/templates/skel.php
 augroup END
+
+" @2011/1/5
+let g:neocomplcache_enable_at_startup = 1
+inoremap <expr><C-x><<C-f>  neocomplcache#manual_filename_complete()
+
+" vim7
+autocmd FileType py set omnifunc=pythoncomplete#Complete
+autocmd FileType js set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+
+" Align
+set nocp
+filetype plugin on
+
+" scroll
+noremap <Space>j <C-f>
+noremap <Space>k <C-b>
+
+call pathogen#runtime_append_all_bundles()

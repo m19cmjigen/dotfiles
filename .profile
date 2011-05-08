@@ -1,10 +1,11 @@
 export PATH=/opt/local/bin:/opt/local/sbin/:/Developer/SDKs/flex_sdk_3/bin:$HOME/sh/:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
+export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
 export SVN_EDITOR=vim
 export LANG=ja_JP.UTF-8
-# terminalの色設定
+## terminalの色設定
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
+ME=`whoami`
 
 #Macportのアップデートコマンド
 alias macportupdate='sudo port -d selfupdate ; sudo port -d sync'
@@ -27,6 +28,22 @@ alias tacc="tail -f /opt/local/apache2/logs/access_log"
 alias cdshare="cd /opt/local/lib/php"
 alias mysql="mysql5"
 
+cdd () {
+        if [ $1 ] ;
+        then
+                cd `cat $HOME/.cdd | awk '{print "["FNR"] "$1""}' | grep "\[$1\]" | awk '{print $2}'`
+        else
+                cat $HOME/.cdd | awk '{print "["FNR"] "$1""}'
+        fi
+}
+
+bf() {
+        if [ $1 ] ; 
+        then
+                sudo cp ${1} ${1}.`date +%Y%m%d%H%M%S`.$ME ;
+        fi  
+}
+
 # .DS_Storeファイルの削除コマンド
 alias delDsF="sudo find . -type f -name '.DS_Store' -delete"
 
@@ -43,4 +60,13 @@ export PATH=${ANDROID_HOME}/tools:$PATH
 # MacPorts Installer addition on 2010-09-09_at_01:34:33: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
+
+YUI_ROOT=/Users/$ME/Src/javascript/yuicompressor-2.4.2
+yuicompress() {
+	/usr/bin/java -jar $YUI_ROOT/build/yuicompressor-2.4.2.jar ${@}
+}
+
+
+git config --global user.name	"$ME"
+git config --global user.email	"$ME@gmail.com"
 
