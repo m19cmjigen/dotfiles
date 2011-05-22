@@ -1,4 +1,25 @@
 set nocompatible
+" ---- vundle ---- "
+filetype off
+
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+Bundle 'autocomp.vim'
+"Bundle 'Align.vim'
+Bundle 'cecutil'
+Bundle 'javaScriptLint.vim'
+Bundle 'matrix.vim'
+Bundle 'minibufexpl.vim'
+Bundle 'minibufexplorerpp'
+Bundle 'php-doc'
+Bundle 'PHP-dictionary'
+Bundle 'writebackup'
+Bundle 'YankRing.vim'
+Bundle 'SuperTab'
+filetype plugin indent on
+" ---- /vundle ---- "
+
+
 
 " display
 "-----------------------------------------------------------
@@ -134,7 +155,7 @@ endif " has("autocmd")
 autocmd FileType php  :set dictionary=~/.vim/dict/php.dict
 
 "php doc мя
-source $HOME/.vim/plugin/php-doc.vim
+"source $HOME/.vim/plugin/php-doc.vim
 inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
 nnoremap <C-D> :call PhpDocSingle()<CR>
 vnoremap <C-D> :call PhpDocRange()<CR>
@@ -233,4 +254,4 @@ filetype plugin on
 noremap <Space>j <C-f>
 noremap <Space>k <C-b>
 
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
