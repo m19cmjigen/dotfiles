@@ -10,7 +10,7 @@ ME=`whoami`
 #Macportのアップデートコマンド
 alias macportupdate='sudo port -d selfupdate ; sudo port -d sync'
 
-PS1='\[\033[0;32m\][`date`]\n[`hostname`:$PWD]\[\033[0;37m\]\n[\u]$' ;
+PS1='\[\033[0;32m\][`date`]\n[`hostname`:$PWD]\[\033[0;37m\]\n[\u]$(__git_ps1 "(%s)")\$ ' ;
 alias ll="ls -laG"
 alias la="ls -laG"
 alias cp="cp -p"
@@ -69,4 +69,4 @@ yuicompress() {
 
 git config --global user.name	"$ME"
 git config --global user.email	"$ME@gmail.com"
-
+source $HOME/.git-completion.bash
