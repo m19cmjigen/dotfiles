@@ -1,0 +1,11 @@
+[user]
+	name = m19cmjigen
+	email = m19cmjigen@gmail.com
+[core]
+	safecrlf = true
+	autocrlf = input
+	editor = vim
+[color]
+	ui = auto
+[credential]
+	helper = osxkeychain
