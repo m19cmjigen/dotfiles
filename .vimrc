@@ -7,7 +7,6 @@ call vundle#rc()
 Bundle 'autocomp.vim'
 "Bundle 'Align.vim'
 Bundle 'cecutil'
-Bundle 'javaScriptLint.vim'
 Bundle 'matrix.vim'
 Bundle 'minibufexpl.vim'
 Bundle 'minibufexplorerpp'
@@ -16,6 +15,14 @@ Bundle 'PHP-dictionary'
 Bundle 'writebackup'
 Bundle 'YankRing.vim'
 Bundle 'SuperTab'
+Bundle 'textmanip.vim'
+Bundle 'vimwiki'
+Bundle 'confluencewiki.vim'
+Bundle 'ZenCoding.vim'
+Bundle 'ref.vim'
+Bundle 'php_funcinfo.vim'
+Bundle 'quickhl.vim'
+"Bundle 'jslint.vim'
 filetype plugin indent on
 " ---- /vundle ---- "
 
@@ -39,7 +46,7 @@ if &t_Co > 2 || has("gui_running")
   hi! Constant                  ctermfg=Cyan    cterm=none
   hi! Identifier                ctermfg=Green   cterm=none
   hi! LineNr      term=standout ctermfg=white    cterm=underline
-  " html ¥Ï¥¤¥é¥¤¥ÈÄêµÁ
+  " html ãƒã‚¤ãƒ©ã‚¤ãƒˆå®šç¾©
   hi! htmlTitle ctermfg=Green   ctermfg=none
   hi! htmlLink  ctermfg=Green
   hi! htmlH1    ctermfg=Green
@@ -51,15 +58,13 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" for message about file ctr+g
 set shortmess+=I
-
-"set list
-"set listchars=tab:>-,trail:-,extends:>,precedes:<
-"set display=uhex
-
+" setting for command line
 set cmdheight=2
+" display title
 set title
-
+" cursol max/min available
 set scrolloff=2
 
 hi StatusLine term=NONE cterm=NONE ctermfg=black ctermbg=Darkblue
@@ -68,16 +73,17 @@ set statusline=%<%f\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%4v\ 
 
 " key map
 " move at line
+" for normalmode
 nnoremap j gj
 nnoremap k gk
 
-" input time
+" for inputmode
 inoremap <Leader>date <C-R>=strftime('%A, %B %d, %Y')<CR>
 inoremap <Leader>time <C-R>=strftime('%H:%M')<CR>
 inoremap <Leader>rdate <C-R>=strftime('%A, %B %d, %Y %H:%M')<CR>
 inoremap <Leader>w3cdtf <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
 
-" search
+" for visual mode
 vnoremap * "zy:let @/ = @z<CR>n
 
 " putline
@@ -95,9 +101,16 @@ endfunction
 " utf-8
 "-----------------------------------------------------------
 "let &termencoding=&encoding
+" http://d.hatena.ne.jp/ka-nacht/20080220/1203433500
+" use output encoding for terminal
 set termencoding=utf-8
+" for use vim internal encoding
 set encoding=utf-8
-set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp-2,euc-jisx0213,euc-jp,cp932,utf-8
+" for use writing buffer file
+set fileencoding=utf-8
+" for use global option
+"set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp-2,euc-jisx0213,euc-jp,cp932,utf-8
+set fileencodings=utf-8,euc-jisx0213,euc-jp,cp932
 
 if &encoding == 'utf-8'
   set ambiwidth=double
@@ -150,73 +163,56 @@ if has("autocmd")
 endif " has("autocmd")
 
 
-"php Êİ´É
-" ¥Õ¥¡¥¤¥ë¥¿¥¤¥×¤´¤È¤Ë¼­½ñ¥Õ¥¡¥¤¥ë¤ò»ØÄê
+"php ä¿ç®¡
+" ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—ã”ã¨ã«è¾æ›¸ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®š
 autocmd FileType php  :set dictionary=~/.vim/dict/php.dict
 
-"php doc ÍÑ
+"php doc ç”¨
 "source $HOME/.vim/plugin/php-doc.vim
 inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
 nnoremap <C-D> :call PhpDocSingle()<CR>
 vnoremap <C-D> :call PhpDocRange()<CR>
 
-
-"¼­½ñ¥Õ¥¡¥¤¥ë¤ò»ÈÍÑ¤¹¤ëÀßÄê¤ËÊÑ¹¹
+"è¾æ›¸ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ç”¨ã™ã‚‹è¨­å®šã«å¤‰æ›´
 set complete+=k
 "-----------------------------------------------------------------------------
-" ¸¡º÷´ØÏ¢
+" æ¤œç´¢é–¢é€£
 "
-"¸¡º÷Ê¸»úÎó¤¬¾®Ê¸»ú¤Î¾ì¹ç¤ÏÂçÊ¸»ú¾®Ê¸»ú¤ò¶èÊÌ¤Ê¤¯¸¡º÷¤¹¤ë
+"æ¤œç´¢æ–‡å­—åˆ—ãŒå°æ–‡å­—ã®å ´åˆã¯å¤§æ–‡å­—å°æ–‡å­—ã‚’åŒºåˆ¥ãªãæ¤œç´¢ã™ã‚‹
 set ignorecase
 set incsearch
-"¸¡º÷Ê¸»úÎó¤ËÂçÊ¸»ú¤¬´Ş¤Ş¤ì¤Æ¤¤¤ë¾ì¹ç¤Ï¶èÊÌ¤·¤Æ¸¡º÷¤¹¤ë
+"æ¤œç´¢æ–‡å­—åˆ—ã«å¤§æ–‡å­—ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã¯åŒºåˆ¥ã—ã¦æ¤œç´¢ã™ã‚‹
 set smartcase
-"¸¡º÷»ş¤ËºÇ¸å¤Ş¤Ç¹Ô¤Ã¤¿¤éºÇ½é¤ËÌá¤ë
+"æ¤œç´¢æ™‚ã«æœ€å¾Œã¾ã§è¡Œã£ãŸã‚‰æœ€åˆã«æˆ»ã‚‹
 set wrapscan
-"¸¡º÷Ê¸»úÎóÆşÎÏ»ş¤Ë½ç¼¡ÂĞ¾İÊ¸»úÎó¤Ë¥Ò¥Ã¥È¤µ¤»¤Ê¤¤
+"æ¤œç´¢æ–‡å­—åˆ—å…¥åŠ›æ™‚ã«é †æ¬¡å¯¾è±¡æ–‡å­—åˆ—ã«ãƒ’ãƒƒãƒˆã•ã›ãªã„
 set noincsearch
-
-"¹ÔÈÖ¹æ¤òÉ½¼¨¤¹¤ë
+"è¡Œç•ªå·ã‚’è¡¨ç¤ºã™ã‚‹
 set number
-"¥¿¥ÖÉı¤òÀßÄê¤¹¤ë
+"ã‚¿ãƒ–å¹…ã‚’è¨­å®šã™ã‚‹
 set tabstop=8
 "set shiftwidth=2
 "set softtabstop=4
 set smarttab
-"ÆşÎÏÃæ¤Î¥³¥Ş¥ó¥É¤ò¥¹¥Æ¡¼¥¿¥¹¤ËÉ½¼¨¤¹¤ë
+"å…¥åŠ›ä¸­ã®ã‚³ãƒãƒ³ãƒ‰ã‚’ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã«è¡¨ç¤ºã™ã‚‹
 set showcmd
-"³ç¸ÌÆşÎÏ»ş¤ÎÂĞ±ş¤¹¤ë³ç¸Ì¤òÉ½¼¨
+"æ‹¬å¼§å…¥åŠ›æ™‚ã®å¯¾å¿œã™ã‚‹æ‹¬å¼§ã‚’è¡¨ç¤º
 set showmatch
-"¸¡º÷·ë²ÌÊ¸»úÎó¤Î¥Ï¥¤¥é¥¤¥È¤òÍ­¸ú¤Ë¤¹¤ë
+"æ¤œç´¢çµæœæ–‡å­—åˆ—ã®ãƒã‚¤ãƒ©ã‚¤ãƒˆã‚’æœ‰åŠ¹ã«ã™ã‚‹
 set hlsearch
-"¥¹¥Æ¡¼¥¿¥¹¥é¥¤¥ó¤ò¾ï¤ËÉ½¼¨
+"ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ©ã‚¤ãƒ³ã‚’å¸¸ã«è¡¨ç¤º
 set laststatus=2
-"¥Ğ¥Ã¥¯¥¹¥Ú¡¼¥¹¤òÍ­¸ú¤Ë¤¹¤ë
+"ãƒãƒƒã‚¯ã‚¹ãƒšãƒ¼ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 set backspace=indent,eol,start
 set wildmenu
 set formatoptions+=mM
-"¥Ğ¥Ã¥¯¥¢¥Ã¥×¥Õ¥¡¥¤¥ë¤ÎºîÀ®
+"ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ
 "set backupdir=z:\\backup
-"¥¿¥ÖÆşÎÏ¤ò¶õÇòÊ¸»ú¤ÇÃÖ¤­´¹¤¨
+"ã‚¿ãƒ–å…¥åŠ›ã‚’ç©ºç™½æ–‡å­—ã§ç½®ãæ›ãˆ
 "set expandtab
 set autoindent
-"¥Ğ¡¼¤Î¿§¤ÎÄ´À°
+"ãƒãƒ¼ã®è‰²ã®èª¿æ•´
 "hi DiffAdd ctermfg=g ctermbg=green
-
-" ÆüËÜ¸ì¤ò°·¤¦¤¿¤á¤ËÉ¬Í×
-"set encoding=japan
-" ¥Õ¥¡¥¤¥ë¤Î´Á»ú¥³¡¼¥É¼«Æ°È½ÊÌ¤Î¤¿¤á¤ËÉ¬Í×¡£(Í×iconv)
-"if has('yiconv++')
-" set fileencodings+=iso-2022-jp
-" set fileencodings+=utf-8,ucs-2le,ucs-2
-" if &encoding ==# 'euc-jp'
-" set fileencodings+=cp932
-" else
-" set fileencodings+=euc-jp
-" endif
-"endif
-" ¥á¥Ã¥»¡¼¥¸¤òÆüËÜ¸ì¤Ë¤¹¤ë
-let $LANG = 'japanese'
 
 " for minibufexpl.vim
 :let g:miniBufExplMapWindowNavVim = 1
@@ -225,7 +221,6 @@ let $LANG = 'japanese'
 
 :abbr #b /***********************************************
 :abbr #e ***********************************************/
-
 
 augroup SkeletonAu
     autocmd!
@@ -254,4 +249,43 @@ filetype plugin on
 noremap <Space>j <C-f>
 noremap <Space>k <C-b>
 
-"call pathogen#runtime_append_all_bundles()
+"===========================================
+"vim-textmanip
+" é¸æŠã—ãŸãƒ†ã‚­ã‚¹ãƒˆã®ç§»å‹•
+vmap <C-j> <Plug>(Textmanip.move_selection_down)
+vmap <C-k> <Plug>(Textmanip.move_selection_up)
+vmap <C-h> <Plug>(Textmanip.move_selection_left)
+vmap <C-l> <Plug>(Textmanip.move_selection_right)
+
+" è¡Œã®è¤‡è£½
+vmap <M-d> <Plug>(Textmanip.duplicate_selection_v)
+nmap <M-d> <Plug>(Textmanip.duplicate_selection_n)
+"===========================================
+" zencoding
+let g:user_zen_expandabbr_key = '<c-e>'  
+
+" javascript
+au FileType javascript set ts=4 sw=4 expandtab
+au BufNewFile *.js set ft=javascript fenc=utf-8
+syntax keyword javaScriptLambda function conceal cchar=
+highlight clear Conceal
+highlight link Conceal Identifier
+highlight link javaScriptLambda Identifier
+
+"map <F5> <Esc> :!php % <Return>
+
+" quichhhl
+nmap <Space>m <Plug>(quickhl-toggle)
+xmap <Space>m <Plug>(quickhl-toggle)
+nmap <Space>M <Plug>(quickhl-reset)
+xmap <Space>M <Plug>(quickhl-reset)
+nmap <Space>j <Plug>(quickhl-match)
+
+autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | setlocal path+=;/
+
+" syntax check for perl
+autocmd filetype perl :map <silent><C-c> :cn<CR>
+autocmd filetype perl :map <silent><C-l> :cl<CR>
+autocmd filetype perl :nnoremap <buffer> <silent> X :w<CR>:!perl -c -MVi::QuickFix %<CR>
+autocmd filetype perl :nnoremap <buffer> <silent> E :cf <CR>
+

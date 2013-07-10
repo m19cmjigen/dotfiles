@@ -7,9 +7,6 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 
 ME=`whoami`
 
-#Macportのアップデートコマンド
-alias macportupdate='sudo port -d selfupdate ; sudo port -d sync'
-
 PS1='\[\033[0;32m\][`date`]\n[`hostname`:$PWD]\[\033[0;37m\]\n[\u]$(__git_ps1 "(%s)")\$ ' ;
 alias ll="ls -laG"
 alias la="ls -laG"
@@ -18,15 +15,7 @@ alias rm="rm -i"
 alias mv="mv -i"
 alias vi="vim"
 alias ..="cd .."
-alias cdpear="cd /opt/local/lib/php/"
-alias cdapache="cd /opt/local/apache2/"
-alias cdhtdocs="cd /opt/local/apache2/htdocs"
-alias cdlab="cd /opt/local/apache2/htdocs/lab"
-alias cdsymf="cd /opt/local/apache2/htdocs/lab/php/symfony"
-alias terr="tail -f /opt/local/apache2/logs/error_log"
-alias tacc="tail -f /opt/local/apache2/logs/access_log"
-alias cdshare="cd /opt/local/lib/php"
-alias mysql="mysql5"
+alias cdhtdocs="cd /Library/WebServer/Documents"
 
 cdd () {
         if [ $1 ] ;
@@ -70,3 +59,4 @@ yuicompress() {
 git config --global user.name	"$ME"
 git config --global user.email	"$ME@gmail.com"
 source $HOME/.git-completion.bash
+source $HOME/.profile.local
