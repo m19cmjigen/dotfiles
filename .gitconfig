@@ -1,6 +1,7 @@
 [user]
 	name = m19cmjigen
 	email = m19cmjigen@gmail.com
+	mail = m19cmjigen@gmail.com
 [core]
 	safecrlf = true
 	autocrlf = input
@@ -9,3 +10,7 @@
 	ui = auto
 [credential]
 	helper = osxkeychain
+[push]
+	default = matching
+[merge]
+	tool = vimdiff3 
