@@ -4,6 +4,8 @@
 :sources: 
 - http://rubygems.org/
 - http://rubygems.org
+- http://gems.rubyforge.org/
+- http://gems.github.com
 :update_sources: true
 :backtrace: false
 :verbose: true
