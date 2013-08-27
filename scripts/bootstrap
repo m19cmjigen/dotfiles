@@ -1,0 +1,13 @@
+#!/bin/bash
+
+git=`which git`
+
+if [ ! -d $HOME/.vim/bundle ]
+then
+	mkdir $HOME/.vim/bundle
+	git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+fi
+
+for file in `find $HOME/dotfiles -name '.*' | grep -v 'dotfiles/.git$' | perl -nle 'm!dotfiles/(.+)$! and print $1'`; do
+	ln -sf $HOME/dotfiles/$file $HOME/$file
+done
