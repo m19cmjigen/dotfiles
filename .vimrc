@@ -1,30 +1,31 @@
 set nocompatible
-" ---- vundle ---- "
 filetype off
 
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
-Bundle 'autocomp.vim'
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle'))
+endif
+
+NeoBundle 'autocomp.vim'
 "Bundle 'Align.vim'
-Bundle 'cecutil'
-Bundle 'matrix.vim'
-Bundle 'minibufexpl.vim'
-Bundle 'minibufexplorerpp'
-Bundle 'php-doc'
-Bundle 'PHP-dictionary'
-Bundle 'writebackup'
-Bundle 'YankRing.vim'
-Bundle 'SuperTab'
-Bundle 'textmanip.vim'
-Bundle 'vimwiki'
-Bundle 'confluencewiki.vim'
-Bundle 'ZenCoding.vim'
-Bundle 'ref.vim'
-Bundle 'php_funcinfo.vim'
-Bundle 'quickhl.vim'
+NeoBundle 'cecutil'
+NeoBundle 'matrix.vim'
+NeoBundle 'minibufexpl.vim'
+NeoBundle 'minibufexplorerpp'
+NeoBundle 'php-doc'
+NeoBundle 'PHP-dictionary'
+NeoBundle 'writebackup'
+NeoBundle 'YankRing.vim'
+NeoBundle 'SuperTab'
+NeoBundle 'textmanip.vim'
+NeoBundle 'vimwiki'
+NeoBundle 'confluencewiki.vim'
+NeoBundle 'ZenCoding.vim'
+NeoBundle 'ref.vim'
+NeoBundle 'php_funcinfo.vim'
+NeoBundle 'quickhl.vim'
 "Bundle 'jslint.vim'
 filetype plugin indent on
-" ---- /vundle ---- "
 
 
 

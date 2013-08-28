@@ -11,10 +11,7 @@ alias cp="cp -p"
 alias rm="rm -i"
 alias mv="mv -i"
 alias ..="cd .."
-<<<<<<< HEAD
 alias cdhtdocs="cd /Library/WebServer/Documents"
-=======
->>>>>>> 32906342fb8ca1b4bab269fb9cdae00670141c4e
 
 cdd () {
         if [ $1 ] ;
