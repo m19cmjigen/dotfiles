@@ -44,3 +44,5 @@ git config --global user.name	"$ME"
 git config --global user.email	"$ME@gmail.com"
 source $HOME/.git-completion.bash
 source $HOME/.profile.local
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
