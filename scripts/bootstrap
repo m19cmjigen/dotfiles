@@ -5,6 +5,8 @@ DOT_FILES="
 .gemrc
 .vimrc
 .gitconfig
+git-prompt.sh
+git-completion.bash
 "
 
 VIM_DOT_DIR=$HOME/.vim
@@ -16,6 +18,21 @@ GIT=`which git`
 MKDIR=`which mkdir`
 WGET=`which wget`
 LN=`which ln`
+
+function setupGitCompletion()
+{
+	if [ ! -e "$DOT_FILE_DIR/git-prompt.sh" ]
+    then
+        $WGET https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -O $DOT_FILE_DIR/git-prompt.sh
+    fi
+
+	if [ ! -e "$DOT_FILE_DIR/git-completion.bash" ]
+    then
+        $WGET https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -O $DOT_FILE_DIR/git-completion.bash
+    fi
+
+    return;
+}
 
 function setupVimColor()
 {
@@ -45,7 +62,7 @@ function setupVimNeoBundle()
 
 function createSymLinks()
 {
-	for file in $DOR_FILES
+	for file in $DOT_FILES
 	do
 		$LN -sf $DOT_FILE_DIR/$file $HOME/$file
 	done
@@ -62,6 +79,9 @@ function main()
 	echo "setupVimNeoBundle"
 	setupVimNeoBundle
 
+	echo "setupGitCompletion"
+	setupGitCompletion
+
 	echo "setupSymLinks"
 	createSymLinks
 
@@ -69,4 +89,3 @@ function main()
 }
 
 main
-

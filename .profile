@@ -35,14 +35,22 @@ alias delDsF="sudo find . -type f -name '.DS_Store' -delete"
 alias set-utf8='source ~/setting/lang-utf8'
 HISTTIMEFORMAT='%Y-%m-%d %T '; export HISTTIMEFORMAT
 
-YUI_ROOT=/Users/$ME/Src/javascript/yuicompressor-2.4.2
-yuicompress() {
-	/usr/bin/java -jar $YUI_ROOT/build/yuicompressor-2.4.2.jar ${@}
-}
-
 git config --global user.name	"$ME"
 git config --global user.email	"$ME@gmail.com"
-source $HOME/.git-completion.bash
-source $HOME/.profile.local
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+
+if [ ! -e $HOME/git-completion.bash ]
+then
+    source $HOME/git-prompt.sh
+    source $HOME/git-completion.bash
+fi
+
+if [ ! -e $HOME/.profile.local ]
+then
+    source $HOME/.profile.local
+fi
+
+if [ ! -d $HOME/.rbenv ]
+then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
