@@ -49,7 +49,7 @@ then
     source $HOME/.profile.local
 fi
 
-if [ ! -d $HOME/.rbenv ]
+if [ -d $HOME/.rbenv ]
 then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
