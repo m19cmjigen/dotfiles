@@ -38,13 +38,13 @@ HISTTIMEFORMAT='%Y-%m-%d %T '; export HISTTIMEFORMAT
 git config --global user.name	"$ME"
 git config --global user.email	"$ME@gmail.com"
 
-if [ ! -e $HOME/git-completion.bash ]
+if [ -e $HOME/git-completion.bash ]
 then
     source $HOME/git-prompt.sh
     source $HOME/git-completion.bash
 fi
 
-if [ ! -e $HOME/.profile.local ]
+if [ -e $HOME/.profile.local ]
 then
     source $HOME/.profile.local
 fi
