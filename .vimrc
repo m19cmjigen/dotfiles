@@ -16,6 +16,7 @@ NeoBundle 'git://github.com/Shougo/neocomplcache.vim'
 NeoBundle 'git://github.com/h1mesuke/unite-outline'
 NeoBundle 'git://github.com/vim-scripts/Align'
 NeoBundle 'git://github.com/bling/vim-airline'
+NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 
 let g:vundle_default_git_proto = 'git'
 filetype plugin indent on
