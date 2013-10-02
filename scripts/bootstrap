@@ -5,6 +5,7 @@ DOT_FILES="
 .gemrc
 .vimrc
 .gitconfig
+.zshrc
 git-prompt.sh
 git-completion.bash
 "
