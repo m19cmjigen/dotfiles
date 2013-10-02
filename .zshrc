@@ -14,9 +14,9 @@ setopt hist_ignore_all_dups     # 既にヒストリにあるコマンド行は�
 
 
 #### ls, 補完リストのカラー設定があれば読み込む
-if [ -x `where dircolors` ] && [ -e $HOME/.dircolors ]; then
-    eval `dircolors $HOME/.dircolors` # 色の設定
-fi
+#if [ -x `where dircolors` ] && [ -e $HOME/.dircolors ]; then
+#    eval `dircolors $HOME/.dircolors` # 色の設定
+#fi
 
 if [ "$TERM" = "screen" ]; then
     chpwd () { echo -n "_`dirs`\\" }
@@ -186,7 +186,8 @@ fi
 if [ -d $HOME/.rbenv ]
 then
     export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+    export RBENV_ROOT=/usr/local/var/rbenv
+    if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 fi
 
 
