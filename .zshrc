@@ -193,6 +193,8 @@ fi
 
 
 # vcs_info 設定
+zstyle ':vcs_info:*' enable git # hg bzr svn 
+
 # vcs_info 設定
 
 RPROMPT=""
