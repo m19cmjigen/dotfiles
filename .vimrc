@@ -191,9 +191,9 @@ highlight link javaScriptLambda Identifier
 highlight ZenkakuSpace term=underline ctermbg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 augroup highlightIdegraphicSpace                                                                                                                      
-	autocmd! highlightIdegraphicSpace                                                                                                                 
-	autocmd Colorscheme * highlight ZenkakuSpace term=underline ctermbg=lightblue guibg=darkgray                                                      
-	autocmd VimEnter,WinEnter * match ZenkakuSpace /　/                                                                                               
+    autocmd! highlightIdegraphicSpace                                                                                                                 
+    autocmd Colorscheme * highlight ZenkakuSpace term=underline ctermbg=lightblue guibg=darkgray                                                      
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/                                                                                              
 augroup END    
 
 set t_Co=256
@@ -316,4 +316,3 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
-
