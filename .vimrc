@@ -67,6 +67,13 @@ function! s:PutLine(len)
   endif
 endfunction
 
+" backup setting
+set backup
+set backupdir=$HOME/.backup
+
+set swapfile
+set directory=$HOME/.backup
+
 " utf-8
 "-----------------------------------------------------------
 " http://d.hatena.ne.jp/ka-nacht/20080220/1203433500
