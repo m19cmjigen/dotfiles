@@ -7,6 +7,7 @@
 	autocrlf = input
 	editor = vim
 	excludesfile = /Users/m19cmjigen/.gitignore_global
+    autoCRLF = false
 [color]
 	ui = auto
 [credential]
@@ -14,7 +15,7 @@
 [push]
 	default = matching
 [merge]
-	tool = vimdiff3 
+	tool = vimdiff
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
