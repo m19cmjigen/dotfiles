@@ -4,7 +4,10 @@ filetype off
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
   call neobundle#rc(expand('~/.vim/bundle'))
+  filetype plugin on
+  filetype indent on
 endif
+" 初期化
 
 NeoBundle 'git://github.com/mattn/vdbi-vim'
 NeoBundle 'git://github.com/mattn/webapi-vim'
@@ -12,7 +15,6 @@ NeoBundle 'git://github.com/fholgado/minibufexpl.vim'
 NeoBundle 'git://github.com/pangloss/vim-javascript'
 NeoBundle 'git://github.com/scrooloose/syntastic'
 NeoBundle 'git://github.com/Shougo/unite.vim'
-NeoBundle 'git://github.com/Shougo/neocomplcache.vim'
 NeoBundle 'git://github.com/Shougo/neosnippet.vim'
 NeoBundle 'git://github.com/h1mesuke/unite-outline'
 NeoBundle 'git://github.com/vim-scripts/Align'
@@ -21,6 +23,7 @@ NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Rip-Rip/clang_complete.git'
+NeoBundle 'derekwyatt/vim-scala.git'
 
 
 let g:vundle_default_git_proto = 'git'
@@ -319,6 +322,10 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+" nerdtree
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local

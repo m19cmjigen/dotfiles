@@ -11,8 +11,6 @@ setopt hist_ignore_all_dups     # 既にヒストリにあるコマンド行は�
 
 
 # git ブランチ名の表示
-
-
 #### ls, 補完リストのカラー設定があれば読み込む
 #if [ -x `where dircolors` ] && [ -e $HOME/.dircolors ]; then
 #    eval `dircolors $HOME/.dircolors` # 色の設定
@@ -134,10 +132,10 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # プロンプトに色を付ける
 autoload -U colors; colors
 # 一般ユーザ時
-tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
-tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
-tmp_rprompt="%{${fg[green]}%}[%/]%{${reset_color}%}"
-tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
+tmp_prompt="%{$fg[cyan]%}%n %/%# %{${reset_color}%}"
+tmp_prompt2="%{$fg[cyan]%}%_> %{${reset_color}%}"
+tmp_rprompt="%{$fg[green]%}[%/]%{${reset_color}%}"
+tmp_sprompt="%{$fg[yellow]%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 # rootユーザ時(太字にし、アンダーバーをつける)
 if [ ${UID} -eq 0 ]; then
     tmp_prompt="%B%U${tmp_prompt}%u%b"
@@ -154,7 +152,7 @@ PROMPT2=$tmp_prompt2  # セカンダリのプロンプト(コマンドが2行以
 SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
 # SSHログイン時のプロンプト
 [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-PROMPT="%{${fg[green]}%}[%W %*] [${HOST%%.*}:%/]
+PROMPT="%{$fg[green]}%}[%W %*] [${HOST%%.*}:%/]
 ${PROMPT}"
   #PROMPT="%{${fg[green]}%}[%W %*] ${HOST%%.*}:%/ ${PROMPT}"
 ;
@@ -372,3 +370,8 @@ function _update_vcs_info_msg() {
     RPROMPT="$prompt"
 }
 add-zsh-hook precmd _update_vcs_info_msg
+
+# for homebrew php56 setting
+# export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+#alias brew="env PATH=${PATH/\/\/takc923\/\.phpenv\/shims:/} brew"
+export DOCKER_HOST=tcp://192.168.59.103:2375
