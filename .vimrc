@@ -24,6 +24,7 @@ NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Rip-Rip/clang_complete.git'
 NeoBundle 'derekwyatt/vim-scala.git'
+NeoBundle 'git://github.com/shime/vim-livedown.git'
 
 
 let g:vundle_default_git_proto = 'git'
@@ -326,6 +327,15 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " nerdtree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
+
+" livedown
+" should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 0
+" should the browser window pop-up upon previewing
+let g:livedown_open = 1 
+" the port on which Livedown server will run
+let g:livedown_port = 1337
+map gm :call LivedownPreview()<CR>
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
