@@ -42,6 +42,10 @@ unixtime(){
     date '+%s'
 }
 
+startRedis(){
+    redis-server /usr/local/etc/redis.conf &
+}
+
 ### Aliases ###
 alias ll='ls -al'
 alias lr='ls -ltr'
@@ -399,3 +403,6 @@ add-zsh-hook precmd _update_vcs_info_msg
 # export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 #alias brew="env PATH=${PATH/\/\/takc923\/\.phpenv\/shims:/} brew"
 export DOCKER_HOST=tcp://192.168.59.103:2375
+
+
+export PATH="/usr/local/sbin:$PATH"

@@ -224,7 +224,7 @@ let g:syntastic_javascript_checker = 'gjslint'
 let g:unite_force_overwrite_statusline = 0
 
 " vim airline
-let g:airline_enable_branch = 0
+let g:airline#extensions#branch = 0
 let g:airline_section_b = "%t %M"
 let g:airline_section_c = ''
 let s:sep = " %{get(g:, 'airline_right_alt_sep', '')} "
