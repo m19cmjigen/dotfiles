@@ -12,6 +12,7 @@ endif
 NeoBundle 'git://github.com/mattn/vdbi-vim'
 NeoBundle 'git://github.com/mattn/webapi-vim'
 NeoBundle 'git://github.com/mattn/emmet-vim'
+NeoBundle 'git://github.com/mattn/zencoding-vim' 
 NeoBundle 'git://github.com/fholgado/minibufexpl.vim'
 NeoBundle 'git://github.com/pangloss/vim-javascript'
 NeoBundle 'git://github.com/scrooloose/syntastic'
