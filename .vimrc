@@ -12,7 +12,6 @@ endif
 NeoBundle 'git://github.com/mattn/vdbi-vim'
 NeoBundle 'git://github.com/mattn/webapi-vim'
 NeoBundle 'git://github.com/mattn/emmet-vim'
-NeoBundle 'git://github.com/mattn/zencoding-vim' 
 NeoBundle 'git://github.com/fholgado/minibufexpl.vim'
 NeoBundle 'git://github.com/pangloss/vim-javascript'
 NeoBundle 'git://github.com/scrooloose/syntastic'
@@ -338,6 +337,9 @@ let g:livedown_open = 1
 " the port on which Livedown server will run
 let g:livedown_port = 1337
 map gm :call LivedownPreview()<CR>
+
+" for emmet vim
+let g:user_emmet_leader_key='<c-r>'
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
