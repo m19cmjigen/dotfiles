@@ -417,3 +417,4 @@ export PATH="/Users/m19cmjigen/.dnx/runtimes/dnx-mono.1.0.0-beta5/bin:$PATH"
 # if [ "`docker-machine status default`" = "Running" ]; then
 #    eval "$(docker-machine env default)"
 #    fi
+export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
