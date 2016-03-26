@@ -418,3 +418,8 @@ export PATH="/Users/m19cmjigen/.dnx/runtimes/dnx-mono.1.0.0-beta5/bin:$PATH"
 #    eval "$(docker-machine env default)"
 #    fi
 export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+
+# path to the DCOS CLI binary
+if [[ "$PATH" != *"/Users/m19cmjigen/Src/dcos/bin"* ]];
+  then export PATH=$PATH:/Users/m19cmjigen/Src/dcos/bin;
+fi
