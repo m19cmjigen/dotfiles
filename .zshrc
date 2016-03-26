@@ -399,27 +399,5 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
-# for homebrew php56 setting
-# export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
-#alias brew="env PATH=${PATH/\/\/takc923\/\.phpenv\/shims:/} brew"
-export DOCKER_CERT_PATH=/Users/m19cmjigen/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376
-
-
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/Users/m19cmjigen/.dnx/runtimes/dnx-mono.1.0.0-beta5/bin:$PATH"
 
-[ -s "/Users/m19cmjigen/.dnx/dnvm/dnvm.sh" ] && . "/Users/m19cmjigen/.dnx/dnvm/dnvm.sh" # Load dnvm
-[ -s "/Users/m19cmjigen/.zshrc.local" ] && . "/Users/m19cmjigen/.zshrc.local" 
-
-# docker-machine
-# if [ "`docker-machine status default`" = "Running" ]; then
-#    eval "$(docker-machine env default)"
-#    fi
-export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
-
-# path to the DCOS CLI binary
-if [[ "$PATH" != *"/Users/m19cmjigen/Src/dcos/bin"* ]];
-  then export PATH=$PATH:/Users/m19cmjigen/Src/dcos/bin;
-fi
