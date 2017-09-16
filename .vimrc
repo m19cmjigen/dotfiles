@@ -1,31 +1,48 @@
 set nocompatible
 filetype off
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle'))
-  filetype plugin on
-  filetype indent on
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
-" 初期化
 
-NeoBundle 'https://github.com/mattn/vdbi-vim'
-NeoBundle 'https://github.com/mattn/webapi-vim'
-NeoBundle 'https://github.com/mattn/emmet-vim'
-NeoBundle 'https://github.com/fholgado/minibufexpl.vim'
-NeoBundle 'https://github.com/pangloss/vim-javascript'
-NeoBundle 'https://github.com/scrooloose/syntastic'
-NeoBundle 'https://github.com/Shougo/unite.vim'
-NeoBundle 'https://github.com/Shougo/neosnippet.vim'
-NeoBundle 'https://github.com/h1mesuke/unite-outline'
-NeoBundle 'https://github.com/vim-scripts/Align'
-NeoBundle 'https://github.com/bling/vim-airline'
-NeoBundle 'https://github.com/scrooloose/nerdtree.git'
-NeoBundle 'https://github.com/thinca/vim-quickrun.git'
-NeoBundle 'https://github.com/Shougo/neocomplcache.git'
-NeoBundle 'https://github.com/Rip-Rip/clang_complete.git'
-NeoBundle 'derekwyatt/vim-scala.git'
-NeoBundle 'https://github.com/shime/vim-livedown.git'
+" Required:
+set runtimepath+=/Users/tachikitakahiro/.vim/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('~/.vim/dein')
+  call dein#begin('~/.vim/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  call dein#add('mattn/vdbi-vim')
+  call dein#add('mattn/webapi-vim')
+  call dein#add('mattn/emmet-vim')
+  call dein#add('fholgado/minibufexpl.vim')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('scrooloose/syntastic')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('h1mesuke/unite-outline')
+  call dein#add('vim-scripts/Align')
+  call dein#add('bling/vim-airline')
+  call dein#add('scrooloose/nerdtree.git')
+  call dein#add('thinca/vim-quickrun.git')
+  call dein#add('Shougo/neocomplcache.git')
+  call dein#add('Rip-Rip/clang_complete.git')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
 
 let g:vundle_default_git_proto = 'git'
