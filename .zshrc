@@ -401,3 +401,4 @@ add-zsh-hook precmd _update_vcs_info_msg
 
 export PATH="/usr/local/sbin:$PATH"
 
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
