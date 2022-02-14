@@ -34,6 +34,11 @@ bf () {
     fi
 }
 
+cdhtdocs() {
+    cd /usr/local/var/www
+}
+
+
 hgrep() {
     history | egrep -i "$*" | tail;
 }
@@ -402,3 +407,15 @@ add-zsh-hook precmd _update_vcs_info_msg
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH="/usr/local/opt/apr/bin:$PATH"
+export PATH="/usr/local/opt/apr-util/bin:$PATH"
+export PATH="$HOME/.rbenv/bin/:$PATH"

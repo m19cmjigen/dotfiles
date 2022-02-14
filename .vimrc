@@ -17,10 +17,6 @@ if dein#load_state('~/.vim/dein')
   " Required:
   call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 
-  " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   call dein#add('mattn/vdbi-vim')
@@ -44,10 +40,6 @@ if dein#load_state('~/.vim/dein')
   call dein#save_state()
 endif
 
-
-let g:vundle_default_git_proto = 'git'
-filetype plugin indent on
-
 " for message about file ctf+g 
 set shortmess+=I
 " setting for command line
@@ -57,10 +49,6 @@ set title
 " cursol max/min available
 set scrolloff=2
  
-
-"hi statusline term=NONE cterm=NONE ctermfg=black ctermbg=Darkblue
-"set statusline=%<%f\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%4v\ %l/%L
-
 " key map
 " move at line
 " for nomalmode mapping
@@ -187,8 +175,6 @@ augroup SkeletonAu
     " autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
     " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     " autocmd FileType c set omnifunc=ccomplete#Complete
-
-    autocmd BufNewFile,BufRead *.yicf set filetype=yicf
 
     " syntax check for perl
     autocmd FileType perl :map <silent><C-c> :cn<CR>
