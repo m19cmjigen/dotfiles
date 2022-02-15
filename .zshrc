@@ -217,6 +217,7 @@ fi
 if [ -d $HOME/.rbenv ]
 then
     export PATH="$HOME/.rbenv/bin:$PATH"
+    export PATH="$HOME/.rbenv/shims:$PATH"
     export RBENV_ROOT=/usr/local/var/rbenv
     if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 fi
