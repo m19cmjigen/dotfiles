@@ -41,6 +41,10 @@ if dein#load_state('~/.vim/dein')
   call dein#save_state()
 endif
 
+" Align
+set nocp
+filetype plugin indent on
+
 " for message about file ctf+g 
 set shortmess+=I
 " setting for command line
@@ -154,6 +158,8 @@ let $LANG = 'japanese'
 :let g:miniBufExplMapWindowNavArrows = 1
 :let g:miniBufExplMapCTabSwitchBuffs = 1
 
+filetype on
+
 augroup SkeletonAu
     autocmd!
     autocmd BufNewFile *.sh 0r $HOME/.vim/templates/skel.sh
@@ -188,9 +194,6 @@ augroup SkeletonAu
     autocmd FileType ruby       setlocal expandtab   shiftwidth=2 tabstop=2 softtabstop=2
 augroup END
 
-" Align
-set nocp
-filetype plugin on
 
 " scroll
 noremap <Space>j <C-f>
