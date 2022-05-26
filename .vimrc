@@ -35,6 +35,9 @@ if dein#load_state('~/.vim/dein')
   call dein#add('thinca/vim-quickrun.git')
   call dein#add('Shougo/neocomplcache.git')
   call dein#add('Rip-Rip/clang_complete.git')
+  call dein#add('ftdetect/ruby.vim')
+"  call dein#add('indent/ruby.vim')
+  call dein#add('tpope/vim-rails')
 
   " Required:
   call dein#end()

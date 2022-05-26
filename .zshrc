@@ -186,6 +186,9 @@ then
     source $HOME/.profile.local
 fi
 
+if [ -f /opt/homebrew/opt/zinit/zinit.zsh ]
+    source source /opt/homebrew/opt/zinit/zinit.zsh
+
 if [ -f $HOME/antigen.zsh ]
 then
     source $HOME/antigen.zsh
@@ -420,3 +423,4 @@ export PATH=$ANDROID_HOME/tools:$PATH
 export PATH="/usr/local/opt/apr/bin:$PATH"
 export PATH="/usr/local/opt/apr-util/bin:$PATH"
 export PATH="$HOME/.rbenv/bin/:$PATH"
+export PYTHON="/opt/homebrew/bin/python3"
