@@ -187,7 +187,17 @@ then
 fi
 
 if [ -f /opt/homebrew/opt/zinit/zinit.zsh ]
-    source source /opt/homebrew/opt/zinit/zinit.zsh
+then
+    source /opt/homebrew/opt/zinit/zinit.zsh
+fi
+# ----------------------------
+# Zinit plugins
+# ----------------------------
+# 入力補完
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+# コマンド履歴を検索
+zinit light zdharma/history-search-multi-word
 
 if [ -f $HOME/antigen.zsh ]
 then
