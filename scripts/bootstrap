@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-DOT_FILES=(.profile .gemrc .vimrc .gitconfig .zshrc antigen.zsh git-prompt.sh git-completion.bash)
+DOT_FILES=(.profile .gemrc .vimrc .gitconfig .zshrc git-prompt.sh git-completion.bash)
 
 VIM_DOT_DIR=$HOME/.vim
 VIM_NEOBUNDLE_DIR=$VIM_DOT_DIR/bundle/neobundle.vim
@@ -38,17 +38,6 @@ function setupVimColor()
 	if [ ! -e "$VIM_COLOR_DIR/molokai.vim" ]
 	then
 		$WGET https://raw.github.com/tomasr/molokai/master/colors/molokai.vim -O $VIM_COLOR_DIR/molokai.vim
-	fi
-
-	return;
-}
-
-function setupAntigen()
-{
-	if [ ! -e "$DOT_FILE_DIR/antigen.zsh" ]
-	then
-		$WGET https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh -O $DOT_FILE_DIR/antigen.zsh
-        source $DOT_FILE_DIR/antigen.zsh
 	fi
 
 	return;
@@ -93,9 +82,6 @@ function main()
 
 	echo "setupGitCompletion"
 	setupGitCompletion
-
-	echo "setupAntigen"
-    setupAntigen	
 
 	echo "setupSymLinks"
 	createSymLinks
