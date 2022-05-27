@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-DOT_FILES=(.profile .gemrc .vimrc .gitconfig .zshrc git-prompt.sh git-completion.bash)
+DOT_FILES=(.profile .gemrc .vimrc .gitconfig .zshrc )
 
 VIM_DOT_DIR=$HOME/.vim
 VIM_NEOBUNDLE_DIR=$VIM_DOT_DIR/bundle/neobundle.vim
@@ -11,21 +11,6 @@ GIT=`which git`
 MKDIR=`which mkdir`
 WGET=`which wget`
 LN=`which ln`
-
-function setupGitCompletion()
-{
-	if [ ! -e "$DOT_FILE_DIR/git-prompt.sh" ]
-    then
-        $WGET https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -O $DOT_FILE_DIR/git-prompt.sh
-    fi
-
-	if [ ! -e "$DOT_FILE_DIR/git-completion.bash" ]
-    then
-        $WGET https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -O $DOT_FILE_DIR/git-completion.bash
-    fi
-
-    return;
-}
 
 function setupVimColor()
 {

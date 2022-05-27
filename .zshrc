@@ -9,13 +9,6 @@ setopt share_history            # 他のシェルのヒストリをリアルタ�
 setopt hist_reduce_blanks       # 余分なスペースを削除してヒストリに保存する
 setopt hist_ignore_all_dups     # 既にヒストリにあるコマンド行は古い方を削除
 
-
-# git ブランチ名の表示
-#### ls, 補完リストのカラー設定があれば読み込む
-#if [ -x `where dircolors` ] && [ -e $HOME/.dircolors ]; then
-#    eval `dircolors $HOME/.dircolors` # 色の設定
-#fi
-
 if [ "$TERM" = "screen" ]; then
     chpwd () { echo -n "_`dirs`\\" }
     chpwd
@@ -34,21 +27,12 @@ bf () {
     fi
 }
 
-cdhtdocs() {
+cdwww() {
     cd /usr/local/var/www
-}
-
-
-hgrep() {
-    history | egrep -i "$*" | tail;
 }
 
 unixtime(){
     date '+%s'
-}
-
-startRedis(){
-    redis-server /usr/local/etc/redis.conf &
 }
 
 ### Aliases ###
@@ -64,7 +48,6 @@ alias -g S='| sed'
 alias -g A='| awk'
 alias -g W='| wc'
 alias -g V="| vim -R -"
-
 
 # ------------------------------
 # General Settings
@@ -111,7 +94,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小�
 setopt extended_glob # グロブ機能を拡張する
 unsetopt caseglob    # ファイルグロブで大文字小文字を区別しない
 
-
 # マッチしたコマンドのヒストリを表示できるようにする
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -130,7 +112,7 @@ function history-all { history -E 1 }
 export LSCOLORS=Exfxcxdxbxegedabagacad
 # 補完時の色の設定
 export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-# ZLS_COLORSとは？
+# ZLS_COLORSとは
 export ZLS_COLORS=$LS_COLORS
 # lsコマンド時、自動で色がつく(ls -Gのようなもの？)
 export CLICOLOR=true
@@ -166,21 +148,6 @@ ${PROMPT}"
   #PROMPT="%{${fg[green]}%}[%W %*] ${HOST%%.*}:%/ ${PROMPT}"
 ;
 
-### Title (user@hostname) ###
-#case "${TERM}" in
-#kterm*|xterm*|)
-#  precmd() {
-#    echo -ne "\033]0;${USER}@${HOST%%.*}\007"
-#  }
-#  ;;
-#esac
-
-#if [ -f $HOME/git-completion.zsh ]
-#then
-#   source $HOME/git-prompt.sh
-#   source $HOME/git-completion.zsh
-#fi
-
 if [ -f $HOME/.profile.local ]
 then
     source $HOME/.profile.local
@@ -215,20 +182,12 @@ fi
 
 # vcs_info 設定
 zstyle ':vcs_info:*' enable git # hg bzr svn 
-
-# vcs_info 設定
-
 RPROMPT=""
 
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
 autoload -Uz colors
-
-# 以下の3つのメッセージをエクスポートする
-#   $vcs_info_msg_0_ : 通常メッセージ用 (緑)
-#   $vcs_info_msg_1_ : 警告メッセージ用 (黄色)
-#   $vcs_info_msg_2_ : エラーメッセージ用 (赤)
 zstyle ':vcs_info:*' max-exports 3
 
 zstyle ':vcs_info:*' enable git svn hg bzr
@@ -394,8 +353,6 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
-export PATH="/usr/local/sbin:$PATH"
-
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
@@ -408,5 +365,4 @@ export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/tools:$PATH
 export PATH="/usr/local/opt/apr/bin:$PATH"
 export PATH="/usr/local/opt/apr-util/bin:$PATH"
-export PATH="$HOME/.rbenv/bin/:$PATH"
 export PYTHON="/opt/homebrew/bin/python3"
