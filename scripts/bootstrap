@@ -57,6 +57,11 @@ function createSymLinks()
 		
 }
 
+function setupDir()
+{
+    $MKDIR $HOME/.backup
+}
+
 function main()
 {
 	echo "setupVimColor"
@@ -73,5 +78,7 @@ function main()
 
 	echo "setupDone"
 }
+
+
 
 main
