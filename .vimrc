@@ -7,42 +7,38 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/tachikitakahiro/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('~/.vim/dein')
-  call dein#begin('~/.vim/dein')
+call dein#begin('~/.vim/dein')
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-  call dein#add('mattn/vdbi-vim')
-  call dein#add('mattn/webapi-vim')
-  call dein#add('mattn/emmet-vim')
-  call dein#add('fholgado/minibufexpl.vim')
-  call dein#add('pangloss/vim-javascript')
-  call dein#add('scrooloose/syntastic')
-  call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets.vim')
-  call dein#add('h1mesuke/unite-outline')
-  call dein#add('vim-scripts/Align')
-  call dein#add('bling/vim-airline')
-  call dein#add('scrooloose/nerdtree.git')
-  call dein#add('thinca/vim-quickrun.git')
-  call dein#add('Shougo/neocomplcache.git')
-  call dein#add('Rip-Rip/clang_complete.git')
-  call dein#add('ftdetect/ruby.vim')
+" Let dein manage dein
+" Required:
+call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+" You can specify revision/branch/tag.
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+call dein#add('mattn/vdbi-vim')
+call dein#add('mattn/webapi-vim')
+call dein#add('mattn/emmet-vim')
+call dein#add('fholgado/minibufexpl.vim')
+call dein#add('pangloss/vim-javascript')
+call dein#add('scrooloose/syntastic')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets.vim')
+call dein#add('h1mesuke/unite-outline')
+call dein#add('vim-scripts/Align')
+call dein#add('bling/vim-airline')
+call dein#add('scrooloose/nerdtree.git')
+call dein#add('thinca/vim-quickrun.git')
+call dein#add('Shougo/neocomplcache.git')
+call dein#add('Rip-Rip/clang_complete.git')
+call dein#add('ftdetect/ruby.vim')
 "  call dein#add('indent/ruby.vim')
-  call dein#add('tpope/vim-rails')
+call dein#add('tpope/vim-rails')
 
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
+" Required:
+call dein#end()
 
 " Align
 set nocp
