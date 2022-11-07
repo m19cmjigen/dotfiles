@@ -14,6 +14,11 @@ if [ "$TERM" = "screen" ]; then
     chpwd
 fi
 
+mkWorkDir () {
+    mkdir -p $HOME/Src/Work/`date +%Y%m`
+    cd $HOME/Src/Work/`date +%Y%m`
+}
+
 backup () {
         if [ $1 ]
         then
@@ -174,7 +179,7 @@ if [ -d $HOME/.rbenv ]
 then
     export PATH="$HOME/.rbenv/bin:$PATH"
     export PATH="$HOME/.rbenv/shims:$PATH"
-    export RBENV_ROOT=/usr/local/var/rbenv
+    export RBENV_ROOT=$HOME/.rbenv
     if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 fi
 
@@ -366,3 +371,6 @@ export PATH=$ANDROID_HOME/tools:$PATH
 export PATH="/usr/local/opt/apr/bin:$PATH"
 export PATH="/usr/local/opt/apr-util/bin:$PATH"
 export PYTHON="/opt/homebrew/bin/python3"
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(rbenv init - zsh)"
