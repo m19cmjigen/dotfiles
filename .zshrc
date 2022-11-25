@@ -374,3 +374,5 @@ export PYTHON="/opt/homebrew/bin/python3"
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init - zsh)"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+eval "$(direnv hook zsh)"
