@@ -33,7 +33,8 @@ bf () {
 }
 
 cdwww() {
-    cd /usr/local/var/www
+    #cd /usr/local/var/www
+    cd /opt/homebrew/var/www
 }
 
 unixtime(){
@@ -377,3 +378,5 @@ eval "$(rbenv init - zsh)"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 eval "$(direnv hook zsh)"
 export PATH="/usr/local/opt/php@8.0/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.0/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.0/sbin:$PATH"
