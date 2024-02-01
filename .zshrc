@@ -394,3 +394,9 @@ eval "$(direnv hook zsh)"
 export PATH="/usr/local/opt/php@8.0/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@8.0/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@8.0/sbin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin

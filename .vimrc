@@ -39,6 +39,7 @@ call dein#add('tpope/vim-rails')
 
 " Required:
 call dein#end()
+call dein#save_state()
 
 " Align
 set nocp

@@ -40,7 +40,7 @@ function setupVimNeoBundle()
 {
 	if [ ! -d $VIM_NEOBUNDLE_DIR ]
 	then
-		$GIT clone git://github.com/Shougo/neobundle.vim.git $VIM_NEOBUNDLE_DIR
+		$GIT clone git@github.com:Shougo/neobundle.vim.git $VIM_NEOBUNDLE_DIR
 	fi
 	
 	return;
