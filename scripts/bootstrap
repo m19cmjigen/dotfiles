@@ -6,6 +6,8 @@ VIM_DOT_DIR=$HOME/.vim
 VIM_NEOBUNDLE_DIR=$VIM_DOT_DIR/bundle/neobundle.vim
 VIM_COLOR_DIR=$VIM_DOT_DIR/colors
 DOT_FILE_DIR=$HOME/dotfiles
+NVIM_DIR=$HOME/.config/
+NVIM_DOTFILE=init.vim
 
 GIT=`which git`
 MKDIR=`which mkdir`
@@ -30,9 +32,10 @@ function setupVimColor()
 
 function setupDein()
 {
-    $WGET -O https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
+    $WGET -O https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh > /tmp/installer.sh
     sh /tmp/installer.sh
     rm -f /tmp/installer.sh
+    $MKDIR $NVIM_DIR
     return
 }
 
@@ -52,6 +55,8 @@ function createSymLinks()
 	do
 		$LN -sf $DOT_FILE_DIR/$file $HOME/$file
 	done
+
+    $LN -sf $NVIM_DIR/$NVIM_DOTFILE $HOME/$NVIM_DOTFILE
 
 	return;
 		
