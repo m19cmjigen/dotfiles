@@ -16,24 +16,40 @@ call dein#begin('~/.vim/dein')
 " Required:
 call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 " You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 call dein#add('mattn/vdbi-vim')
 call dein#add('mattn/webapi-vim')
 call dein#add('mattn/emmet-vim')
 call dein#add('fholgado/minibufexpl.vim')
 call dein#add('pangloss/vim-javascript')
 call dein#add('scrooloose/syntastic')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets.vim')
 call dein#add('h1mesuke/unite-outline')
 call dein#add('vim-scripts/Align')
 call dein#add('bling/vim-airline')
 call dein#add('scrooloose/nerdtree.git')
 call dein#add('thinca/vim-quickrun.git')
+
+
+
+
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+call dein#add('Shougo/unite.vim')
+
+call dein#add('Shougo/deoplete.nvim')
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+endif
+let g:deoplete#enable_at_startup = 1
+
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/neocomplcache.git')
-call dein#add('Rip-Rip/clang_complete.git')
-call dein#add('ftdetect/ruby.vim')
+
+
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('Shougo/neosnippet-snippets.vim')
+"call dein#add('Rip-Rip/clang_complete.git')
+"call dein#add('ftdetect/ruby.vim')
 "  call dein#add('indent/ruby.vim')
 call dein#add('tpope/vim-rails')
 
@@ -174,15 +190,6 @@ augroup SkeletonAu
     autocmd Filetype php :set makeprg=php\ -l\ %
     autocmd Filetype php :set errorformat=%m\ in\ %f\ on\ line\ %l
 
-    " vim7
-    " autocmd FileType py set omnifunc=pythoncomplete#Complete
-    " autocmd FileType js set omnifunc=javascriptcomplete#CompleteJS
-    " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-    " autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-    " autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-    " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-    " autocmd FileType c set omnifunc=ccomplete#Complete
-
     " syntax check for perl
     autocmd FileType perl :map <silent><C-c> :cn<CR>
     autocmd FileType perl :map <silent><C-l> :cl<CR>
@@ -246,19 +253,19 @@ let g:airline#extensions#whitespace#enabled = 0
 
 
 " neocomplecacheを反映する
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+"" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+"" Use neocomplcache.
+"let g:neocomplcache_enable_at_startup = 1
+"" Use smartcase.
+"let g:neocomplcache_enable_smart_case = 1
+"" Use camel case completion.
+"let g:neocomplcache_enable_camel_case_completion = 1
+"" Use underbar completion.
+"let g:neocomplcache_enable_underbar_completion = 1
+"" Set minimum syntax keyword length.
+"let g:neocomplcache_min_syntax_length = 3
+"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {

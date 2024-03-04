@@ -168,11 +168,6 @@ ${PROMPT}"
   #PROMPT="%{${fg[green]}%}[%W %*] ${HOST%%.*}:%/ ${PROMPT}"
 ;
 
-if [ -f $HOME/.profile.local ]
-then
-    source $HOME/.profile.local
-fi
-
 if [ -f /opt/homebrew/opt/zinit/zinit.zsh ]
 then
     source /opt/homebrew/opt/zinit/zinit.zsh
@@ -400,3 +395,13 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+if [ -f $HOME/.profile.local ]
+then
+    source $HOME/.profile.local
+fi
+
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
