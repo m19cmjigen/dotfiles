@@ -6,7 +6,7 @@ VIM_DOT_DIR=$HOME/.vim
 VIM_NEOBUNDLE_DIR=$VIM_DOT_DIR/bundle/neobundle.vim
 VIM_COLOR_DIR=$VIM_DOT_DIR/colors
 DOT_FILE_DIR=$HOME/dotfiles
-NVIM_DIR=$HOME/.config/
+NVIM_DIR=$HOME/.config/nvim
 NVIM_DOTFILE=init.vim
 
 GIT=`which git`
@@ -56,7 +56,7 @@ function createSymLinks()
 		$LN -sf $DOT_FILE_DIR/$file $HOME/$file
 	done
 
-    $LN -sf $NVIM_DIR/$NVIM_DOTFILE $HOME/$NVIM_DOTFILE
+    $LN -sf $DOT_FILE_DIR/init.vim $NVIM_DIR/$NVIM_DOTFILE
 
 	return;
 		
