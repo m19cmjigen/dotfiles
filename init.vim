@@ -32,11 +32,14 @@ call dein#add('Shougo/neosnippet-snippets.vim')
 call dein#add('h1mesuke/unite-outline')
 call dein#add('vim-scripts/Align')
 call dein#add('bling/vim-airline')
-call dein#add('scrooloose/nerdtree.git')
+call dein#add('preservim/nerdtree.git')
 call dein#add('thinca/vim-quickrun.git')
 call dein#add('Shougo/neocomplcache.git')
 call dein#add('Rip-Rip/clang_complete.git')
+call dein#add('neoclide/coc.nvim', {'branch': 'release'})
 call dein#add('ftdetect/ruby.vim')
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.5' })
 "  call dein#add('indent/ruby.vim')
 call dein#add('tpope/vim-rails')
 
@@ -105,6 +108,9 @@ set backupdir=$HOME/.backup
 
 set swapfile
 set directory=$HOME/.backup
+
+set modifiable
+set write
 
 " utf-8
 "-----------------------------------------------------------
