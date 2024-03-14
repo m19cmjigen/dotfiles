@@ -171,15 +171,23 @@ ${PROMPT}"
 if [ -f /opt/homebrew/opt/zinit/zinit.zsh ]
 then
     source /opt/homebrew/opt/zinit/zinit.zsh
+    # ----------------------------
+    # Zinit plugins
+    # ----------------------------
+    # 入力補完
+    zinit light zsh-users/zsh-autosuggestions
+    zinit light zsh-users/zsh-completions
+    # コマンド履歴を検索
+    zinit light zdharma/history-search-multi-word
+    # Load a few important annexes, without Turbo
+    # (this is currently required for annexes)
+    zinit light-mode for \
+        zdharma-continuum/zinit-annex-as-monitor \
+        zdharma-continuum/zinit-annex-bin-gem-node \
+        zdharma-continuum/zinit-annex-patch-dl \
+        zdharma-continuum/zinit-annex-rust
+### End of Zinit's installer chunk
 fi
-# ----------------------------
-# Zinit plugins
-# ----------------------------
-# 入力補完
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-# コマンド履歴を検索
-zinit light zdharma/history-search-multi-word
 
 # ------------------------------
 # Other Settings
@@ -382,13 +390,8 @@ export PATH="/usr/local/opt/apr/bin:$PATH"
 export PATH="/usr/local/opt/apr-util/bin:$PATH"
 export PYTHON="/opt/homebrew/bin/python3"
 # Set PATH, MANPATH, etc., for Homebrew.
-eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(rbenv init - zsh)"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-eval "$(direnv hook zsh)"
 export PATH="/usr/local/opt/php@8.0/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.0/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.0/sbin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -396,12 +399,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-source /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 if [ -f $HOME/.profile.local ]
 then
     source $HOME/.profile.local
 fi
-
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+eval "$(direnv hook zsh)"

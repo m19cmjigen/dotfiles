@@ -10,8 +10,8 @@
     autoCRLF = false
 [color]
 	ui = auto
-[credential]
-	helper = osxkeychain
+#[credential]
+#	helper = osxkeychain
 [push]
 	default = matching
 [merge]
