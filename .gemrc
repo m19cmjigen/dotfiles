@@ -9,3 +9,4 @@
 :concurrent_downloads: 8
 benchmark: false
 gem: "--no-ri --no-rdoc"
+gem: --no-document

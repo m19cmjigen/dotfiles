@@ -27,10 +27,6 @@ call dein#add('vim-scripts/Align')
 call dein#add('bling/vim-airline')
 call dein#add('scrooloose/nerdtree.git')
 call dein#add('thinca/vim-quickrun.git')
-
-
-
-
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 call dein#add('Shougo/unite.vim')
 
@@ -45,12 +41,6 @@ call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/neocomplcache.git')
 
-
-"call dein#add('Shougo/neosnippet.vim')
-"call dein#add('Shougo/neosnippet-snippets.vim')
-"call dein#add('Rip-Rip/clang_complete.git')
-"call dein#add('ftdetect/ruby.vim')
-"  call dein#add('indent/ruby.vim')
 call dein#add('tpope/vim-rails')
 
 " Required:

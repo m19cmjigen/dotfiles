@@ -5,7 +5,7 @@
 [core]
 	safecrlf = true
 	autoCRLF = false
-	editor = vim
+	editor = nvim
 	excludesfile = /Users/m19cmjigen/.gitignore_global
     autoCRLF = false
 [color]
@@ -33,3 +33,5 @@
 	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
