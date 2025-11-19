@@ -515,10 +515,3 @@ function prtag() {
         echo "https://github.com/${repo_name}/releases/tag/$tag"
 }
 
-# CFO-Alpha の歴史改変を乗り越えて PR を開く
-function sepr() {
-        if [[ $1 = '' ]]; then echo '探したいPRに含まれるコミットを引数として指定してね'; return; fi
-        PR_NUM=`git log --merges --oneline --reverse --ancestry-path $1...develop | grep 'Merge pull request #' | head -n 1 | awk '{print $5}' | sed 's/#//g'`
-        REPO_URL=`git config --get remote.origin.url | sed -r 's/.*(\@|\/\/)(.*)(\:|\/)([^:\/]*)\/([^\/\.]*)\.git/https:\/\/\2\/\4\/\5/'`
-        echo "あなたのお探しの PR は $REPO_URL/pull/$PR_NUM"
-}
