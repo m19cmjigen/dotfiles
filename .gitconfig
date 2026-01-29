@@ -2,12 +2,14 @@
 	name = m19cmjigen
 	email = m19cmjigen@gmail.com
 	mail = m19cmjigen@gmail.com
+	signingkey = ~/.ssh/id_ed25519.pub
 [core]
 	safecrlf = true
 	autoCRLF = false
-	editor = nvim
+	editor = vim
 	excludesfile = /Users/m19cmjigen/.gitignore_global
     autoCRLF = false
+	hooksPath = /Users/takahiro-tachiki/.fdev-git-hooks
 [color]
 	ui = auto
 #[credential]
@@ -35,3 +37,7 @@
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [url "ssh://git@github.com"]
 	insteadOf = https://github.com
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh

@@ -1,3 +1,5 @@
+" Ward off unexpected things that your distro might have made, as
+" well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 filetype off
 
@@ -6,16 +8,24 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+" Set Dein base path (required)
+let s:dein_base = '/Users/takahiro-tachiki/.cache/dein'
 
-" Required:
-call dein#begin('~/.vim/dein')
+" Set Dein source path (required)
+let s:dein_src = '/Users/takahiro-tachiki/.cache/dein/repos/github.com/Shougo/dein.vim'
 
+" Set Dein runtime path (required)
+execute 'set runtimepath+=' . s:dein_src
+
+" Call Dein initialization (required)
+call dein#begin(s:dein_base)
+
+call dein#add(s:dein_src)
+
+" Your plugins go here:
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('Shougo/neosnippet-snippets')
 " Let dein manage dein
-" Required:
-call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
-" You can specify revision/branch/tag.
 call dein#add('mattn/vdbi-vim')
 call dein#add('mattn/webapi-vim')
 call dein#add('mattn/emmet-vim')
@@ -31,25 +41,37 @@ call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 call dein#add('Shougo/unite.vim')
 
 call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
+"if !has('nvim')
+"  call dein#add('roxma/nvim-yarp')
+"  call dein#add('roxma/vim-hug-neovim-rpc')
+"endif
 let g:deoplete#enable_at_startup = 1
 
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/neocomplcache.git')
+"call dein#add('Shougo/neocomplcache.git')
 
 call dein#add('tpope/vim-rails')
 
-" Required:
+" Finish Dein initialization (required)
 call dein#end()
 call dein#save_state()
 
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+filetype indent plugin on
+
+" Enable syntax highlighting
+syntax enable
+
+" Uncomment if you want to install not-installed plugins on startup.
+"if dein#check_install()
+" call dein#install()
+"endif
+
 " Align
 set nocp
-filetype plugin indent on
 
 " for message about file ctf+g 
 set shortmess+=I
@@ -166,30 +188,30 @@ let $LANG = 'japanese'
 
 filetype on
 
-augroup SkeletonAu
-    autocmd!
-    autocmd BufNewFile *.sh 0r $HOME/.vim/templates/skel.sh
-    autocmd BufNewFile *.html 0r $HOME/.vim/templates/skel.htm
-    autocmd BufNewFile *.php 0r $HOME/.vim/templates/skel.php
-    autocmd BufNewFile *.rb 0r $HOME/.vim/templates/skel.rb
-
-    "php 保管
-    " ファイルタイプごとに辞書ファイルを指定
-    autocmd FileType php :set dictionary=~/.vim/dict/php.dict
-    " makeコマンドでシンタックスチェック
-    autocmd Filetype php :set makeprg=php\ -l\ %
-    autocmd Filetype php :set errorformat=%m\ in\ %f\ on\ line\ %l
-
-    " syntax check for perl
-    autocmd FileType perl :map <silent><C-c> :cn<CR>
-    autocmd FileType perl :map <silent><C-l> :cl<CR>
-    autocmd FileType perl :nnoremap <buffer> <silent> X :w<CR>:!perl -c -MVi::QuickFix % <CR>
-    autocmd FileType perl :nnoremap <buffer> <silent> E :cf <CR>
-
-    autocmd FileType php        setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-    autocmd FileType javascript setlocal expandtab   shiftwidth=4 tabstop=4 softtabstop=4
-    autocmd FileType ruby       setlocal expandtab   shiftwidth=2 tabstop=2 softtabstop=2
-augroup END
+"augroup SkeletonAu
+"    autocmd!
+"    autocmd BufNewFile *.sh 0r $HOME/.vim/templates/skel.sh
+"    autocmd BufNewFile *.html 0r $HOME/.vim/templates/skel.htm
+"    autocmd BufNewFile *.php 0r $HOME/.vim/templates/skel.php
+"    autocmd BufNewFile *.rb 0r $HOME/.vim/templates/skel.rb
+"
+"    "php 保管
+"    " ファイルタイプごとに辞書ファイルを指定
+"    autocmd FileType php :set dictionary=~/.vim/dict/php.dict
+"    " makeコマンドでシンタックスチェック
+"    autocmd Filetype php :set makeprg=php\ -l\ %
+"    autocmd Filetype php :set errorformat=%m\ in\ %f\ on\ line\ %l
+"
+"    " syntax check for perl
+"    autocmd FileType perl :map <silent><C-c> :cn<CR>
+"    autocmd FileType perl :map <silent><C-l> :cl<CR>
+"    autocmd FileType perl :nnoremap <buffer> <silent> X :w<CR>:!perl -c -MVi::QuickFix % <CR>
+"    autocmd FileType perl :nnoremap <buffer> <silent> E :cf <CR>
+"
+"    autocmd FileType php        setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+"    autocmd FileType javascript setlocal expandtab   shiftwidth=4 tabstop=4 softtabstop=4
+"    autocmd FileType ruby       setlocal expandtab   shiftwidth=2 tabstop=2 softtabstop=2
+"augroup END
 
 
 " scroll
@@ -276,7 +298,7 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   return neocomplcache#smart_close_popup() . "\<CR>"
   " For no inserting <CR> key.
@@ -331,7 +353,6 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " nerdtree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
-
 
 " livedown
 " should markdown preview get shown automatically upon opening markdown buffer
