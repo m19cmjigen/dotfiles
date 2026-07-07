@@ -403,3 +403,4 @@ if [ -f $HOME/.profile.local ]
 then
     source $HOME/.profile.local
 fi
+export PATH="$HOME/.local/bin:$PATH"
