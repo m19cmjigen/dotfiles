@@ -2,52 +2,6 @@
 " well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
-" Set Dein base path (required)
-let s:dein_base = '/Users/takahiro-tachiki/.cache/dein'
-
-" Set Dein source path (required)
-let s:dein_src = '/Users/takahiro-tachiki/.cache/dein/repos/github.com/Shougo/dein.vim'
-
-" Set Dein runtime path (required)
-execute 'set runtimepath+=' . s:dein_src
-
-" Call Dein initialization (required)
-call dein#begin(s:dein_base)
-
-call dein#add(s:dein_src)
-
-" Your plugins go here:
-"call dein#add('Shougo/neosnippet.vim')
-"call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-call dein#add('mattn/vdbi-vim')
-call dein#add('mattn/webapi-vim')
-call dein#add('mattn/emmet-vim')
-call dein#add('fholgado/minibufexpl.vim')
-call dein#add('pangloss/vim-javascript')
-call dein#add('scrooloose/syntastic')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets.vim')
-call dein#add('h1mesuke/unite-outline')
-call dein#add('vim-scripts/Align')
-call dein#add('bling/vim-airline')
-call dein#add('preservim/nerdtree.git')
-call dein#add('thinca/vim-quickrun.git')
-call dein#add('Shougo/neocomplcache.git')
-call dein#add('Rip-Rip/clang_complete.git')
-call dein#add('neoclide/coc.nvim', {'branch': 'release'})
-call dein#add('ftdetect/ruby.vim')
-call dein#add('nvim-lua/plenary.nvim')
-call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.5' })
-"  call dein#add('indent/ruby.vim')
-call dein#add('tpope/vim-rails')
-
-
-
-" Finish Dein initialization (required)
-call dein#end()
-
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
@@ -56,11 +10,6 @@ filetype indent plugin on
 " Enable syntax highlighting
 syntax enable
 
-" Uncomment if you want to install not-installed plugins on startup.
-if dein#check_install()
- call dein#install()
-endif
-"
 " Align
 set nocp
 filetype plugin indent on
@@ -114,9 +63,6 @@ set write
 
 " utf-8
 "-----------------------------------------------------------
-" http://d.hatena.ne.jp/ka-nacht/20080220/1203433500
-" for use output encoding for terminal
-set termencoding=utf-8
 " for use vim internal encoding
 set encoding=utf-8
 " for use writing buffer file
@@ -180,43 +126,6 @@ let $LANG = 'japanese'
 :let g:miniBufExplMapWindowNavVim = 1
 :let g:miniBufExplMapWindowNavArrows = 1
 :let g:miniBufExplMapCTabSwitchBuffs = 1
-
-filetype on
-
-augroup SkeletonAu
-    autocmd!
-    autocmd BufNewFile *.sh 0r $HOME/.vim/templates/skel.sh
-    autocmd BufNewFile *.html 0r $HOME/.vim/templates/skel.htm
-    autocmd BufNewFile *.php 0r $HOME/.vim/templates/skel.php
-    autocmd BufNewFile *.rb 0r $HOME/.vim/templates/skel.rb
-
-    "php 保管
-    " ファイルタイプごとに辞書ファイルを指定
-    autocmd FileType php :set dictionary=~/.vim/dict/php.dict
-    " makeコマンドでシンタックスチェック
-    autocmd Filetype php :set makeprg=php\ -l\ %
-    autocmd Filetype php :set errorformat=%m\ in\ %f\ on\ line\ %l
-
-    " vim7
-    " autocmd FileType py set omnifunc=pythoncomplete#Complete
-    " autocmd FileType js set omnifunc=javascriptcomplete#CompleteJS
-    " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-    " autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-    " autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-    " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-    " autocmd FileType c set omnifunc=ccomplete#Complete
-
-    " syntax check for perl
-    autocmd FileType perl :map <silent><C-c> :cn<CR>
-    autocmd FileType perl :map <silent><C-l> :cl<CR>
-    autocmd FileType perl :nnoremap <buffer> <silent> X :w<CR>:!perl -c -MVi::QuickFix % <CR>
-    autocmd FileType perl :nnoremap <buffer> <silent> E :cf <CR>
-
-    autocmd FileType php        setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-    autocmd FileType javascript setlocal expandtab   shiftwidth=4 tabstop=4 softtabstop=4
-    autocmd FileType ruby       setlocal expandtab   shiftwidth=2 tabstop=2 softtabstop=2
-augroup END
-
 
 " scroll
 noremap <Space>j <C-f>
@@ -313,24 +222,6 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplcache_enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplcache_enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS

@@ -263,22 +263,6 @@ let g:airline_section_y = '%3p%%'
 let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%-2v'
 let g:airline#extensions#whitespace#enabled = 0
 
-
-" neocomplecacheを反映する
-"" Disable AutoComplPop.
-"let g:acp_enableAtStartup = 0
-"" Use neocomplcache.
-"let g:neocomplcache_enable_at_startup = 1
-"" Use smartcase.
-"let g:neocomplcache_enable_smart_case = 1
-"" Use camel case completion.
-"let g:neocomplcache_enable_camel_case_completion = 1
-"" Use underbar completion.
-"let g:neocomplcache_enable_underbar_completion = 1
-"" Set minimum syntax keyword length.
-"let g:neocomplcache_min_syntax_length = 3
-"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
       \  'default' : '',
@@ -312,23 +296,6 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplcache_enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplcache_enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
