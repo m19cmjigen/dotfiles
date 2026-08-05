@@ -404,3 +404,4 @@ then
     source $HOME/.profile.local
 fi
 export PATH="$HOME/.local/bin:$PATH"
+alias vimdiff='nvim -d '

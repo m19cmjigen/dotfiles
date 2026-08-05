@@ -6,7 +6,7 @@
 [core]
 	safecrlf = true
 	autoCRLF = false
-	editor = vim
+	editor = nvim
 	excludesfile = /Users/m19cmjigen/.gitignore_global
     autoCRLF = false
 	hooksPath = /Users/takahiro-tachiki/.fdev-git-hooks
