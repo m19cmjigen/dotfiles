@@ -405,3 +405,5 @@ then
 fi
 export PATH="$HOME/.local/bin:$PATH"
 alias vimdiff='nvim -d '
+
+source /Users/takahiro/.iterm2_shell_integration.zsh
