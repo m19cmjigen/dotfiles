@@ -13,6 +13,15 @@ local ext_lazy = "$HOME/.cache/dpp/repos/github.com/Shougo/dpp-ext-lazy"
 local ext_installer = "$HOME/.cache/dpp/repos/github.com/Shougo/dpp-ext-installer"
 local ext_git = "$HOME/.cache/dpp/repos/github.com/Shougo/dpp-protocol-git"
 
+vim.opt.number = true
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd("Lexplore")
+    vim.cmd("vertical resize 30")
+  end,
+})
+
 vim.opt.runtimepath:append(ext_toml)
 vim.opt.runtimepath:append(ext_git)
 vim.opt.runtimepath:append(ext_lazy)
