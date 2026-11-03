@@ -56,7 +56,12 @@ function createSymLinks()
 		$LN -sf $DOT_FILE_DIR/$file $HOME/$file
 	done
 
-    $LN -sf $DOT_FILE_DIR/init.vim $NVIM_DIR/$NVIM_DOTFILE
+	$LN -sf $DOT_FILE_DIR/init.vim $NVIM_DIR/$NVIM_DOTFILE
+	$LN -sf $DOT_FILE_DIR/nvim/init.lua $NVIM_DIR/init.lua
+	$LN -sf $DOT_FILE_DIR/nvim/dein_lazy.toml $NVIM_DIR/dein_lazy.toml
+	$LN -sf $DOT_FILE_DIR/nvim/dein.toml $NVIM_DIR/dein.toml
+	$LN -sf $DOT_FILE_DIR/nvim/dpp.ts $NVIM_DIR/dpp.ts
+	$LN -sf $DOT_FILE_DIR/nvim/coc-settings.json $NVIM_DIR/coc-settings.json
 
 	return;
 		
